@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+     <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title><ui:insert name="title">SiFuv - Cliente</ui:insert></title>
+        <link href="../resources/css/jsfcrud.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    
+    <h:body>
+        <div id="nav">
+            <div class="titulonav">
+                SiFuv - Cliente
+            </div>
+            <div class="tabla">
+                <ul>
+                    <li><a href="../producto/List.xhtml">Productos</a></li>
+                    <li><a href="../domicilios/Create.xhtml">Pedir Domicilio</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="header">
+            <a href="../faces/index.xhtml" class="cerrar">Cerrar Sesión</a>
+            <h2>Fruver La Victoria</h2>
+            <h3>Pedir Domicilio</h3>
+            <div class="ta">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDomiciliosLabel_peso}" for="peso" />
+                    <h:inputText id="peso" value="#{domiciliosController.selected.peso}" title="#{bundle.CreateDomiciliosTitle_peso}" required="true" requiredMessage="#{bundle.CreateDomiciliosRequiredMessage_peso}"/>
+                    <h:outputLabel value="#{bundle.CreateDomiciliosLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{domiciliosController.selected.telefono}" title="#{bundle.CreateDomiciliosTitle_telefono}" required="true" requiredMessage="#{bundle.CreateDomiciliosRequiredMessage_telefono}"/>
+                    <h:outputLabel value="#{bundle.CreateDomiciliosLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{domiciliosController.selected.direccion}" title="#{bundle.CreateDomiciliosTitle_direccion}" required="true" requiredMessage="#{bundle.CreateDomiciliosRequiredMessage_direccion}"/>
+                    <h:outputLabel value="#{bundle.CreateDomiciliosLabel_idDomiciliario}" for="idDomiciliario" />
+                    <h:selectOneMenu id="idDomiciliario" value="#{domiciliosController.selected.idDomiciliario}" title="#{bundle.CreateDomiciliosTitle_idDomiciliario}" required="true" requiredMessage="#{bundle.CreateDomiciliosRequiredMessage_idDomiciliario}">
+                        <f:selectItems value="#{domiciliarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDomiciliosLabel_idCliente}" for="idCliente" />
+                    <h:selectOneMenu id="idCliente" value="#{domiciliosController.selected.idCliente}" title="#{bundle.CreateDomiciliosTitle_idCliente}" required="true" requiredMessage="#{bundle.CreateDomiciliosRequiredMessage_idCliente}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDomiciliosLabel_categorias}" for="categorias" />
+                    <h:selectOneMenu id="categorias" value="#{domiciliosController.selected.categorias}" title="#{bundle.CreateDomiciliosTitle_categorias}" required="true" requiredMessage="#{bundle.CreateDomiciliosRequiredMessage_categorias}">
+                        <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{domiciliosController.create}" value="#{bundle.CreateDomiciliosSaveLink}" class="btn btn-success"/>
+            </h:form>
+        </div>
+        </div>
+    </h:body>
+</html>

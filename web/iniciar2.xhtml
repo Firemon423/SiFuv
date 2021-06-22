@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Ingresa</title>
+        <link href="resources/css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="contenedor">
+        <a href="iniciar.xhtml" class="btn btn-dark">Trabajadores</a>
+        <a href="iniciar2.xhtml" class="btn btn-dark">Clientes</a>
+        <br></br><br></br>
+            <div class="form_enc">
+                <h1>Ingresa C.</h1>
+            </div>
+            <div class="form_cuerpo">
+                <div>
+                    <label for="correo">Correo</label>
+                    <h:inputText value="#{authenticationController1.correo}" style="color: #000;" class="inputColor" id="email"/>
+                </div>
+                <div>
+                    <label for="contrasena">Contraseña</label>
+                    <h:inputSecret value="#{authenticationController1.password}" style="color: #000;" class="inputColor" id="contraseña"/>
+                </div>
+            </div>
+            <div class="form_pie">
+                <br></br>
+                <a class="olvido; btn btn-dark" href="">Olvide mi contraseña</a>
+                <br></br><br></br>
+                <h:commandButton action="#{authenticationController1.authentication()}" id="btn-submit" class="btn btn-dark" value="Ingresar" />
+                <span>#{authenticationController1.message}</span>
+            </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>

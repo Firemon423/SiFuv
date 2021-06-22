@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title><ui:insert name="title">SiFuv - Administrador</ui:insert></title>
+        <link href="../resources/css/jsfcrud.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    
+    <h:body>
+        <div id="nav">
+            <div class="titulonav">
+                SiFuv-Admin
+            </div>
+            <div class="tabla">
+                <ul>
+                    <li><a href="../inventario/List.xhtml">Inventario</a></li>
+                    <li><a href="../ventas/List.xhtml">Ventas</a></li>
+                    <li><a href="../novedades/List.xhtml">Novedades</a></li>
+                    <li><a href="../usuarios/Create.xhtml">Nuevo usuario</a></li>
+                    <li> <a href="http://localhost:8080/ConexionReportes1/pdf4.jsp"> Reporte de Usuarios </a> </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="header">
+            <a href="../faces/index.xhtml" class="cerrar">Cerrar Sesión</a>
+            <h2>Fruver La Victoria</h2>
+            <h3>Lista de inventario</h3>
+            <div class="ta">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListInventarioEmpty}" rendered="#{inventarioController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{inventarioController.items.rowCount > 0}">
+                    <h:commandLink action="#{inventarioController.previous}" value="#{bundle.Previous} #{inventarioController.pagination.pageSize}" rendered="#{inventarioController.pagination.hasPreviousPage}" class="btn btn-success"/>&nbsp;
+                    <h:commandLink action="#{inventarioController.next}" value="#{bundle.Next} #{inventarioController.pagination.pageSize}" rendered="#{inventarioController.pagination.hasNextPage}" class="btn btn-success"/>&nbsp;
+                    <h:dataTable value="#{inventarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInventarioTitle_idInventario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idInventario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInventarioTitle_fechaIngreso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaIngreso}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInventarioTitle_cantidadPro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidadPro}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInventarioTitle_idProveedor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idProveedor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInventarioTitle_categorias}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categorias}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{inventarioController.prepareEdit}" value="#{bundle.ListInventarioEditLink}" class="btn btn-success"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{inventarioController.destroy}" value="#{bundle.ListInventarioDestroyLink}" class="btn btn-success"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{inventarioController.prepareCreate}" value="#{bundle.ListInventarioCreateLink}" class="btn btn-success"/>
+            </h:form>
+        </div>
+        </div>
+    </h:body>
+</html>

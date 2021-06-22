@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCategoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_categorias}" for="categorias" />
+                    <h:inputText id="categorias" value="#{categoriaController.selected.categorias}" title="#{bundle.CreateCategoriaTitle_categorias}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_categorias}"/>
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_idFrutas}" for="idFrutas" />
+                    <h:selectOneMenu id="idFrutas" value="#{categoriaController.selected.idFrutas}" title="#{bundle.CreateCategoriaTitle_idFrutas}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_idFrutas}">
+                        <f:selectItems value="#{frutasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_idVerduras}" for="idVerduras" />
+                    <h:selectOneMenu id="idVerduras" value="#{categoriaController.selected.idVerduras}" title="#{bundle.CreateCategoriaTitle_idVerduras}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_idVerduras}">
+                        <f:selectItems value="#{verdurasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_idGranos}" for="idGranos" />
+                    <h:selectOneMenu id="idGranos" value="#{categoriaController.selected.idGranos}" title="#{bundle.CreateCategoriaTitle_idGranos}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_idGranos}">
+                        <f:selectItems value="#{granosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_idEspecias}" for="idEspecias" />
+                    <h:selectOneMenu id="idEspecias" value="#{categoriaController.selected.idEspecias}" title="#{bundle.CreateCategoriaTitle_idEspecias}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_idEspecias}">
+                        <f:selectItems value="#{especiasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{categoriaController.create}" value="#{bundle.CreateCategoriaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{categoriaController.prepareList}" value="#{bundle.CreateCategoriaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCategoriaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

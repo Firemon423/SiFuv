@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVentasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVentasLabel_idVentas}" for="idVentas" />
+                    <h:inputText id="idVentas" value="#{ventasController.selected.idVentas}" title="#{bundle.EditVentasTitle_idVentas}" required="true" requiredMessage="#{bundle.EditVentasRequiredMessage_idVentas}"/>
+                    <h:outputLabel value="#{bundle.EditVentasLabel_fechaVenta}" for="fechaVenta" />
+                    <h:inputText id="fechaVenta" value="#{ventasController.selected.fechaVenta}" title="#{bundle.EditVentasTitle_fechaVenta}" required="true" requiredMessage="#{bundle.EditVentasRequiredMessage_fechaVenta}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditVentasLabel_valorTotal}" for="valorTotal" />
+                    <h:inputText id="valorTotal" value="#{ventasController.selected.valorTotal}" title="#{bundle.EditVentasTitle_valorTotal}" required="true" requiredMessage="#{bundle.EditVentasRequiredMessage_valorTotal}"/>
+                    <h:outputLabel value="#{bundle.EditVentasLabel_idCajero}" for="idCajero" />
+                    <h:selectOneMenu id="idCajero" value="#{ventasController.selected.idCajero}" title="#{bundle.EditVentasTitle_idCajero}" required="true" requiredMessage="#{bundle.EditVentasRequiredMessage_idCajero}">
+                        <f:selectItems value="#{cajeroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditVentasLabel_idAdministrador}" for="idAdministrador" />
+                    <h:selectOneMenu id="idAdministrador" value="#{ventasController.selected.idAdministrador}" title="#{bundle.EditVentasTitle_idAdministrador}" required="true" requiredMessage="#{bundle.EditVentasRequiredMessage_idAdministrador}">
+                        <f:selectItems value="#{administradorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{ventasController.update}" value="#{bundle.EditVentasSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVentasViewLink}"/>
+                <br />
+                <h:commandLink action="#{ventasController.prepareList}" value="#{bundle.EditVentasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVentasIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

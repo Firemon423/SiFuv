@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFidelizacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFidelizacionLabel_idFidelizacion}"/>
+                    <h:outputText value="#{fidelizacionController.selected.idFidelizacion}" title="#{bundle.ViewFidelizacionTitle_idFidelizacion}"/>
+                    <h:outputText value="#{bundle.ViewFidelizacionLabel_puntosAcumulados}"/>
+                    <h:outputText value="#{fidelizacionController.selected.puntosAcumulados}" title="#{bundle.ViewFidelizacionTitle_puntosAcumulados}"/>
+                    <h:outputText value="#{bundle.ViewFidelizacionLabel_nombreCliente}"/>
+                    <h:outputText value="#{fidelizacionController.selected.nombreCliente}" title="#{bundle.ViewFidelizacionTitle_nombreCliente}"/>
+                    <h:outputText value="#{bundle.ViewFidelizacionLabel_estadoDelCliente}"/>
+                    <h:outputText value="#{fidelizacionController.selected.estadoDelCliente}" title="#{bundle.ViewFidelizacionTitle_estadoDelCliente}"/>
+                    <h:outputText value="#{bundle.ViewFidelizacionLabel_idCliente}"/>
+                    <h:outputText value="#{fidelizacionController.selected.idCliente}" title="#{bundle.ViewFidelizacionTitle_idCliente}"/>
+                    <h:outputText value="#{bundle.ViewFidelizacionLabel_idVentas}"/>
+                    <h:outputText value="#{fidelizacionController.selected.idVentas}" title="#{bundle.ViewFidelizacionTitle_idVentas}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{fidelizacionController.destroyAndView}" value="#{bundle.ViewFidelizacionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFidelizacionEditLink}"/>
+                <br />
+                <h:commandLink action="#{fidelizacionController.prepareCreate}" value="#{bundle.ViewFidelizacionCreateLink}" />
+                <br />
+                <h:commandLink action="#{fidelizacionController.prepareList}" value="#{bundle.ViewFidelizacionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFidelizacionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

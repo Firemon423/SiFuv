@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lora', serif;
+    background-color: #FFFFFF;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#nav{
+    height: 100vh;
+    width: 170px;
+    border-right: 1px solid darkgray;
+    background-color: #D9F6CB;
+    position: absolute;
+    text-decoration: none;
+}
+
+.titulonav{
+    background-color: #448045;
+    color: #FFFFFF;
+    font-size: 20px;
+    height: 45px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.tabla a{
+    text-decoration: none;
+    color: darkgrey;
+}
+
+.tabla li{
+    list-style: none;
+    font-weight: 600;
+    height: 30px;
+    padding-top: 10px;
+}
+.tabla li a:hover{
+    color: darkslategray;
+    margin-left: 20px;
+}
+
+.cerrar{
+    display: block;
+    height: 45px;
+    background-color: #212529;
+    text-align: right;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+#header{
+    margin-left: 170px;
+}
+
+#header a:hover{
+    color: darkgray;
+}
+
+h2 {
+    width: 97%;
+    height: 50%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    border-bottom: 1px solid darkgray; 
+}
+
+h3{
+    margin-left: 15px;
+}
+
+.ta{
+    margin-left: 15px;
+}
+
+a {
+    color: #e33b06;
+}
+
+table {
+    empty-cells: show;
+}
+
+form.jsfcrud_list_form th, td th {
+    font-size: small;
+    color: #000000;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #000000;
+    border-bottom-color: #000000;
+    border-left-color: #000000;
+    border-right-color: #000000;
+    letter-spacing: 3px;
+    text-align: left;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #448045;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #000000;
+    border-bottom-color: #000000;
+    border-left-color: #000000;
+    border-right-color: #000000;
+    vertical-align: baseline;
+    padding-bottom: 0px;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    color: #4e6a71;
+}
+
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    color: #4e6a71;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

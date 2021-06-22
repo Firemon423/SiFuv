@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title><ui:insert name="title">SiFuv - Domiciliario</ui:insert></title>
+        <link href="../resources/css/jsfcrud.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+
+    <h:body>
+        <div id="nav">
+            <div class="titulonav">
+                SiFuv-Domiciliario
+            </div>
+            <div class="tabla">
+                <ul>
+                    <li><a href="../domicilios/List.xhtml">Domicilios</a></li>
+                    <li><a href="../novedades/Create.xhtml">Novedades</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="header">
+            <a href="../faces/index.xhtml" class="cerrar">Cerrar Sesión</a>
+            <h2>Fruver La Victoria</h2>
+            <h3>Crear novedad</h3>
+            <div class="ta">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateNovedadesLabel_novedad}" for="novedad" />
+                    <h:inputText id="novedad" value="#{novedadesController.selected.novedad}" title="#{bundle.CreateNovedadesTitle_novedad}" required="true" requiredMessage="#{bundle.CreateNovedadesRequiredMessage_novedad}"/>
+                    <h:outputLabel value="#{bundle.CreateNovedadesLabel_idDomicilio}" for="idDomicilio" />
+                    <h:selectOneMenu id="idDomicilio" value="#{novedadesController.selected.idDomicilio}" title="#{bundle.CreateNovedadesTitle_idDomicilio}" required="true" requiredMessage="#{bundle.CreateNovedadesRequiredMessage_idDomicilio}">
+                        <f:selectItems value="#{domiciliosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateNovedadesLabel_idDomiciliario}" for="idDomiciliario" />
+                    <h:selectOneMenu id="idDomiciliario" value="#{novedadesController.selected.idDomiciliario}" title="#{bundle.CreateNovedadesTitle_idDomiciliario}" required="true" requiredMessage="#{bundle.CreateNovedadesRequiredMessage_idDomiciliario}">
+                        <f:selectItems value="#{domiciliarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{novedadesController.create}" value="#{bundle.CreateNovedadesSaveLink}" class="btn btn-success"/>
+            </h:form>
+            </div>
+        </div>
+    </h:body>
+</html>
+

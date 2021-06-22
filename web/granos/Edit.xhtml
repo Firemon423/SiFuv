@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditGranosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditGranosLabel_idGranos}" for="idGranos" />
+                    <h:inputText id="idGranos" value="#{granosController.selected.idGranos}" title="#{bundle.EditGranosTitle_idGranos}" required="true" requiredMessage="#{bundle.EditGranosRequiredMessage_idGranos}"/>
+                    <h:outputLabel value="#{bundle.EditGranosLabel_nombreGrano}" for="nombreGrano" />
+                    <h:inputText id="nombreGrano" value="#{granosController.selected.nombreGrano}" title="#{bundle.EditGranosTitle_nombreGrano}" required="true" requiredMessage="#{bundle.EditGranosRequiredMessage_nombreGrano}"/>
+                    <h:outputLabel value="#{bundle.EditGranosLabel_precioUnidad}" for="precioUnidad" />
+                    <h:inputText id="precioUnidad" value="#{granosController.selected.precioUnidad}" title="#{bundle.EditGranosTitle_precioUnidad}" required="true" requiredMessage="#{bundle.EditGranosRequiredMessage_precioUnidad}"/>
+                    <h:outputLabel value="#{bundle.EditGranosLabel_precioLibra}" for="precioLibra" />
+                    <h:inputText id="precioLibra" value="#{granosController.selected.precioLibra}" title="#{bundle.EditGranosTitle_precioLibra}" required="true" requiredMessage="#{bundle.EditGranosRequiredMessage_precioLibra}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{granosController.update}" value="#{bundle.EditGranosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditGranosViewLink}"/>
+                <br />
+                <h:commandLink action="#{granosController.prepareList}" value="#{bundle.EditGranosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditGranosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

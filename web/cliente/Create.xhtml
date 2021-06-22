@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title><ui:insert name="title">Registrate</ui:insert></title>
+        <link href="../resources/css/registrar.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    
+    <h:body>
+        <h:form>
+        <h1>Registrate</h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_nombres}" for="nombres" />
+                    <h:inputText id="nombres" value="#{clienteController.selected.nombres}" title="#{bundle.CreateClienteTitle_nombres}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_nombres}"/>
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{clienteController.selected.apellidos}" title="#{bundle.CreateClienteTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_apellidos}"/>
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{clienteController.selected.correo}" title="#{bundle.CreateClienteTitle_correo}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_correo}"/>
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_contraseña}" for="contraseña" />
+                    <h:inputSecret id="contraseña" value="#{clienteController.selected.contraseña}" title="#{bundle.CreateClienteTitle_contraseña}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_contraseña}"/>
+                </h:panelGrid>
+                <br></br>
+                <h:panelGroup id="messagePanel" layout="block" style="background: white">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <ul class="lists">
+                    <li><a><h:commandLink action="#{clienteController.create}" value="#{bundle.CreateClienteSaveLink}" class="btn btn-dark" /></a></li>
+                    <li><a href="../faces/IniciosSesion.xhtml" class="btn btn-dark">Inicio Sesión</a></li>
+                </ul>
+            </h:form>
+    </h:body>
+</html>

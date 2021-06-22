@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEspeciasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEspeciasLabel_idEspecias}" for="idEspecias" />
+                    <h:inputText id="idEspecias" value="#{especiasController.selected.idEspecias}" title="#{bundle.CreateEspeciasTitle_idEspecias}" required="true" requiredMessage="#{bundle.CreateEspeciasRequiredMessage_idEspecias}"/>
+                    <h:outputLabel value="#{bundle.CreateEspeciasLabel_nombreEspecia}" for="nombreEspecia" />
+                    <h:inputText id="nombreEspecia" value="#{especiasController.selected.nombreEspecia}" title="#{bundle.CreateEspeciasTitle_nombreEspecia}" required="true" requiredMessage="#{bundle.CreateEspeciasRequiredMessage_nombreEspecia}"/>
+                    <h:outputLabel value="#{bundle.CreateEspeciasLabel_precioUnidad}" for="precioUnidad" />
+                    <h:inputText id="precioUnidad" value="#{especiasController.selected.precioUnidad}" title="#{bundle.CreateEspeciasTitle_precioUnidad}" required="true" requiredMessage="#{bundle.CreateEspeciasRequiredMessage_precioUnidad}"/>
+                    <h:outputLabel value="#{bundle.CreateEspeciasLabel_precioLibra}" for="precioLibra" />
+                    <h:inputText id="precioLibra" value="#{especiasController.selected.precioLibra}" title="#{bundle.CreateEspeciasTitle_precioLibra}" required="true" requiredMessage="#{bundle.CreateEspeciasRequiredMessage_precioLibra}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{especiasController.create}" value="#{bundle.CreateEspeciasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{especiasController.prepareList}" value="#{bundle.CreateEspeciasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEspeciasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

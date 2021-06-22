@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFidelizacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFidelizacionLabel_idFidelizacion}" for="idFidelizacion" />
+                    <h:inputText id="idFidelizacion" value="#{fidelizacionController.selected.idFidelizacion}" title="#{bundle.EditFidelizacionTitle_idFidelizacion}" required="true" requiredMessage="#{bundle.EditFidelizacionRequiredMessage_idFidelizacion}"/>
+                    <h:outputLabel value="#{bundle.EditFidelizacionLabel_puntosAcumulados}" for="puntosAcumulados" />
+                    <h:inputText id="puntosAcumulados" value="#{fidelizacionController.selected.puntosAcumulados}" title="#{bundle.EditFidelizacionTitle_puntosAcumulados}" required="true" requiredMessage="#{bundle.EditFidelizacionRequiredMessage_puntosAcumulados}"/>
+                    <h:outputLabel value="#{bundle.EditFidelizacionLabel_nombreCliente}" for="nombreCliente" />
+                    <h:inputText id="nombreCliente" value="#{fidelizacionController.selected.nombreCliente}" title="#{bundle.EditFidelizacionTitle_nombreCliente}" required="true" requiredMessage="#{bundle.EditFidelizacionRequiredMessage_nombreCliente}"/>
+                    <h:outputLabel value="#{bundle.EditFidelizacionLabel_estadoDelCliente}" for="estadoDelCliente" />
+                    <h:inputText id="estadoDelCliente" value="#{fidelizacionController.selected.estadoDelCliente}" title="#{bundle.EditFidelizacionTitle_estadoDelCliente}" required="true" requiredMessage="#{bundle.EditFidelizacionRequiredMessage_estadoDelCliente}"/>
+                    <h:outputLabel value="#{bundle.EditFidelizacionLabel_idCliente}" for="idCliente" />
+                    <h:selectOneMenu id="idCliente" value="#{fidelizacionController.selected.idCliente}" title="#{bundle.EditFidelizacionTitle_idCliente}" required="true" requiredMessage="#{bundle.EditFidelizacionRequiredMessage_idCliente}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFidelizacionLabel_idVentas}" for="idVentas" />
+                    <h:selectOneMenu id="idVentas" value="#{fidelizacionController.selected.idVentas}" title="#{bundle.EditFidelizacionTitle_idVentas}" required="true" requiredMessage="#{bundle.EditFidelizacionRequiredMessage_idVentas}">
+                        <f:selectItems value="#{ventasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{fidelizacionController.update}" value="#{bundle.EditFidelizacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFidelizacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{fidelizacionController.prepareList}" value="#{bundle.EditFidelizacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFidelizacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

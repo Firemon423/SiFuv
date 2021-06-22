@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVerdurasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVerdurasLabel_idVerduras}" for="idVerduras" />
+                    <h:inputText id="idVerduras" value="#{verdurasController.selected.idVerduras}" title="#{bundle.CreateVerdurasTitle_idVerduras}" required="true" requiredMessage="#{bundle.CreateVerdurasRequiredMessage_idVerduras}"/>
+                    <h:outputLabel value="#{bundle.CreateVerdurasLabel_nombreVerdura}" for="nombreVerdura" />
+                    <h:inputText id="nombreVerdura" value="#{verdurasController.selected.nombreVerdura}" title="#{bundle.CreateVerdurasTitle_nombreVerdura}" required="true" requiredMessage="#{bundle.CreateVerdurasRequiredMessage_nombreVerdura}"/>
+                    <h:outputLabel value="#{bundle.CreateVerdurasLabel_precioUnidad}" for="precioUnidad" />
+                    <h:inputText id="precioUnidad" value="#{verdurasController.selected.precioUnidad}" title="#{bundle.CreateVerdurasTitle_precioUnidad}" required="true" requiredMessage="#{bundle.CreateVerdurasRequiredMessage_precioUnidad}"/>
+                    <h:outputLabel value="#{bundle.CreateVerdurasLabel_precioLibra}" for="precioLibra" />
+                    <h:inputText id="precioLibra" value="#{verdurasController.selected.precioLibra}" title="#{bundle.CreateVerdurasTitle_precioLibra}" required="true" requiredMessage="#{bundle.CreateVerdurasRequiredMessage_precioLibra}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{verdurasController.create}" value="#{bundle.CreateVerdurasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{verdurasController.prepareList}" value="#{bundle.CreateVerdurasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVerdurasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

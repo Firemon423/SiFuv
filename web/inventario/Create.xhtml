@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title><ui:insert name="title">SiFuv - Administrador</ui:insert></title>
+        <link href="../resources/css/jsfcrud.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    
+    <h:body>
+        <div id="nav">
+            <div class="titulonav">
+                SiFuv-Admin
+            </div>
+            <div class="tabla">
+                <ul>
+                    <li><a href="../inventario/List.xhtml">Inventario</a></li>
+                    <li><a href="../ventas/List.xhtml">Ventas</a></li>
+                    <li><a href="../novedades/List.xhtml">Novedades</a></li>
+                    <li><a href="../usuarios/Create.xhtml">Nuevo usuario</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="header">
+            <a href="../faces/index.xhtml" class="cerrar">Cerrar Sesión</a>
+            <h2>Fruver La Victoria</h2>
+            <h3>Crear nuevo inventario</h3>
+            <div class="ta">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateInventarioLabel_fechaIngreso}" for="fechaIngreso" />
+                    <h:inputText id="fechaIngreso" value="#{inventarioController.selected.fechaIngreso}" title="#{bundle.CreateInventarioTitle_fechaIngreso}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_fechaIngreso}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateInventarioLabel_cantidadPro}" for="cantidadPro" />
+                    <h:inputText id="cantidadPro" value="#{inventarioController.selected.cantidadPro}" title="#{bundle.CreateInventarioTitle_cantidadPro}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_cantidadPro}"/>
+                    <h:outputLabel value="#{bundle.CreateInventarioLabel_idProveedor}" for="idProveedor" />
+                    <h:selectOneMenu id="idProveedor" value="#{inventarioController.selected.idProveedor}" title="#{bundle.CreateInventarioTitle_idProveedor}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_idProveedor}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateInventarioLabel_categorias}" for="categorias" />
+                    <h:selectOneMenu id="categorias" value="#{inventarioController.selected.categorias}" title="#{bundle.CreateInventarioTitle_categorias}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_categorias}">
+                        <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{inventarioController.create}" value="#{bundle.CreateInventarioSaveLink}" class="btn btn-success"/>
+                <br />
+                <br />
+                <h:commandLink action="#{inventarioController.prepareList}" value="#{bundle.CreateInventarioShowAllLink}" immediate="true" class="btn btn-success"/>
+            </h:form>
+            </div>
+        </div>
+    </h:body>
+</html>
+

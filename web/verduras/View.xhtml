@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVerdurasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVerdurasLabel_idVerduras}"/>
+                    <h:outputText value="#{verdurasController.selected.idVerduras}" title="#{bundle.ViewVerdurasTitle_idVerduras}"/>
+                    <h:outputText value="#{bundle.ViewVerdurasLabel_nombreVerdura}"/>
+                    <h:outputText value="#{verdurasController.selected.nombreVerdura}" title="#{bundle.ViewVerdurasTitle_nombreVerdura}"/>
+                    <h:outputText value="#{bundle.ViewVerdurasLabel_precioUnidad}"/>
+                    <h:outputText value="#{verdurasController.selected.precioUnidad}" title="#{bundle.ViewVerdurasTitle_precioUnidad}"/>
+                    <h:outputText value="#{bundle.ViewVerdurasLabel_precioLibra}"/>
+                    <h:outputText value="#{verdurasController.selected.precioLibra}" title="#{bundle.ViewVerdurasTitle_precioLibra}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{verdurasController.destroyAndView}" value="#{bundle.ViewVerdurasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVerdurasEditLink}"/>
+                <br />
+                <h:commandLink action="#{verdurasController.prepareCreate}" value="#{bundle.ViewVerdurasCreateLink}" />
+                <br />
+                <h:commandLink action="#{verdurasController.prepareList}" value="#{bundle.ViewVerdurasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVerdurasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

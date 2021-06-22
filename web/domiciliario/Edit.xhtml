@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDomiciliarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDomiciliarioLabel_idDomiciliario}" for="idDomiciliario" />
+                    <h:inputText id="idDomiciliario" value="#{domiciliarioController.selected.idDomiciliario}" title="#{bundle.EditDomiciliarioTitle_idDomiciliario}" required="true" requiredMessage="#{bundle.EditDomiciliarioRequiredMessage_idDomiciliario}"/>
+                    <h:outputLabel value="#{bundle.EditDomiciliarioLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{domiciliarioController.selected.telefono}" title="#{bundle.EditDomiciliarioTitle_telefono}" required="true" requiredMessage="#{bundle.EditDomiciliarioRequiredMessage_telefono}"/>
+                    <h:outputLabel value="#{bundle.EditDomiciliarioLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{domiciliarioController.selected.idUsuario}" title="#{bundle.EditDomiciliarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditDomiciliarioRequiredMessage_idUsuario}">
+                        <f:selectItems value="#{usuariosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{domiciliarioController.update}" value="#{bundle.EditDomiciliarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDomiciliarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{domiciliarioController.prepareList}" value="#{bundle.EditDomiciliarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDomiciliarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
